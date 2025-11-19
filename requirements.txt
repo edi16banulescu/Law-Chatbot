@@ -1,3 +1,5 @@
 chromadb
 numpy
 scipy
+google-genai
+python-dotenv

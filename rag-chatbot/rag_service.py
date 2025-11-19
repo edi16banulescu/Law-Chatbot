@@ -2,16 +2,17 @@ import os
 from google import genai
 from google.genai.errors import APIError
 from data_processor import load_and_chunk_data
-from vector_db_manager import create_or_update_db, retrieve_chunks
+# Importam functiile necesare din vector_db_manager
 
 # --- Configuratii LLM ---
 GENERATION_MODEL = 'gemini-2.5-flash'
 
 def get_gemini_client():
     """Initializeaza clientul Gemini si verifica existenta API Key."""
+    # Cheia API este citita direct din variabilele de mediu
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        raise ValueError("GEMINI_API_KEY nu este setată în variabilele de mediu.")
+        raise ValueError("GEMINI_API_KEY nu este setată. Verificați variabila de mediu.")
     return genai.Client(api_key=api_key)
 
 def generate_response_with_llm(retrieved_chunks: list[dict], user_query: str) -> str:
@@ -66,14 +67,21 @@ def run_rag_pipeline(user_input: str, k_results: int = 2):
         # 1. DATA ENGINEERING
         chunks_list, metadata_list, document_ids = load_and_chunk_data()
 
+        if not chunks_list:
+            print("\n[INFO] Nu s-au putut încărca datele din fișier. Oprire pipeline.")
+            return
+
         # 2. INDEXARE (Creeaza sau actualizeaza ChromaDB)
+        from vector_db_manager import create_or_update_db
         vector_db_collection = create_or_update_db(chunks_list, metadata_list, document_ids)
         
         # 3. RETRIEVAL (Regasirea Articolelor)
+        from vector_db_manager import retrieve_chunks
         retrieved_chunks = retrieve_chunks(vector_db_collection, user_input, k=k_results)
 
         if not retrieved_chunks:
-            return "Nu am putut regăsi articole relevante din Codul Rutier. Vă rugăm să reformulați întrebarea."
+            print("\n[INFO] Nu am putut regăsi articole relevante din Codul Rutier. Vă rugăm să reformulați întrebarea.")
+            return
 
         # 4. GENERATION (Generarea Raspunsului real de catre LLM)
         final_answer = generate_response_with_llm(retrieved_chunks, user_input)
@@ -84,18 +92,17 @@ def run_rag_pipeline(user_input: str, k_results: int = 2):
         print(final_answer)
         
     except ValueError as e:
-        print(f"\n[FATAL ERROR]: Vă rugăm să setați variabila de mediu: {e}")
+        print(f"\n[FATAL ERROR]: Eroare de configurare sau cheie API: {e}")
     except Exception as e:
         print(f"\n[FATAL ERROR]: O eroare a întrerupt pipeline-ul: {e}")
 
 if __name__ == "__main__":
-    # EXEMPLU DE UTILIZARE
+    # USER QUERY
     query1 = "Care sunt sancțiunile pentru ITP expirat?"
     query2 = "Ce amenda iau daca merg fara placute de inmatriculare?"
-
-    # 1. Asigurati-va ca setati variabila de mediu GEMINI_API_KEY in terminal
-    # export GEMINI_API_KEY="AIzaSy..." 
-
-    # Rulati cele doua interogari
-    run_rag_pipeline(query1, k_results=1)
-    run_rag_pipeline(query2, k_results=2)
+    
+    # Rulati prima interogare cu K mai mare pentru a include contextul necesar
+    run_rag_pipeline(query1, k_results=3) 
+    print("\n\n" + "-"*60 + "\n\n")
+    # Rulati a doua interogare cu K normal
+    # run_rag_pipeline(query2, k_results=2)

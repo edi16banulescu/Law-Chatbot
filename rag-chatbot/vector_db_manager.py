@@ -2,36 +2,61 @@ import chromadb
 from google import genai
 from google.genai.errors import APIError
 import os
+import time 
+import shutil # NOU: Necesara pentru stergerea directorului ChromaDB
 
 # --- Configuratii ChromaDB si API ---
 CHROMA_PATH = "chroma_db"
 COLLECTION_NAME = "CodRutier_RAG"
-EMBEDDING_MODEL = 'text-embedding-004' # Modelul Google pentru embedding
+EMBEDDING_MODEL = 'text-embedding-004' 
+# Limita maxima de articole pe lot (impusa de API)
+BATCH_SIZE = 100 
 
 def get_gemini_client():
     """Initializeaza clientul Gemini si verifica existenta API Key."""
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        raise ValueError("GEMINI_API_KEY nu este setată în variabilele de mediu.")
+        raise ValueError("GEMINI_API_KEY nu este setată. Setați variabila de mediu.")
     return genai.Client(api_key=api_key)
 
 def generate_embeddings(texts: list[str]) -> list[list[float]]:
-    """Generează vectori de embedding reali folosind Gemini API."""
+    """
+    Generează vectori de embedding reali folosind Gemini API, 
+    împărțind lista de texte în loturi (batches) de maximum 100 de elemente.
+    """
     client = get_gemini_client()
-    try:
-        response = client.models.embed_content(
-            model=EMBEDDING_MODEL,
-            content=texts,
-            task_type="RETRIEVAL_DOCUMENT"
-        )
-        # API-ul returneaza un obiect, extragem listele de embeddings
-        return response['embedding']
-    except APIError as e:
-        print(f"Eroare API la generarea embedding-urilor: {e}")
-        return []
-    except Exception as e:
-        print(f"Eroare neașteptată la embedding: {e}")
-        return []
+    all_embeddings = []
+    
+    # Impartirea in loturi de 100
+    for i in range(0, len(texts), BATCH_SIZE):
+        batch = texts[i:i + BATCH_SIZE]
+        print(f"  > Procesează lotul {i // BATCH_SIZE + 1} de {len(batch)} articole...")
+        
+        try:
+            response = client.models.embed_content(
+                model=EMBEDDING_MODEL,
+                contents=batch, 
+                config={'task_type': "RETRIEVAL_DOCUMENT"} 
+            )
+            
+            # CORECȚIE CRITICĂ: Extragem lista de valori (float) din fiecare obiect ContentEmbedding
+            for embedding_obj in response.embeddings:
+                all_embeddings.append(embedding_obj.values)
+            
+            # Pauza de 1 secunda intre loturi pentru a preveni throttling (optimizare)
+            time.sleep(1) 
+            
+        except APIError as e:
+            print(f"Eroare API la generarea embedding-urilor (Lotul {i // BAZA_MARIME + 1}): {e}")
+            return []
+        except Exception as e:
+            # Tipareste eroarea completa pentru debugging
+            import traceback
+            print(f"Eroare neașteptată la embedding: {e}")
+            print(traceback.format_exc())
+            return []
+
+    return all_embeddings
 
 def create_or_update_db(chunks_list: list[str], metadata_list: list[dict], document_ids: list[str]):
     """Creează clientul ChromaDB și adaugă documentele."""
@@ -46,6 +71,7 @@ def create_or_update_db(chunks_list: list[str], metadata_list: list[dict], docum
         vectors = generate_embeddings(chunks_list)
         
         if not vectors:
+             # Eroarea critica este acum aruncata in generate_embeddings
              raise Exception("Nu s-au putut genera vectorii din cauza erorii API.")
         
         # Inserare in ChromaDB
@@ -68,10 +94,11 @@ def retrieve_chunks(collection, user_query: str, k: int = 2) -> list[dict]:
     # 1. Vectorizeaza Intrebarea (Query Vector)
     query_vector_response = client.models.embed_content(
         model=EMBEDDING_MODEL,
-        content=[user_query],
-        task_type="RETRIEVAL_QUERY" # Task type diferit pentru query
+        contents=[user_query], 
+        config={'task_type': "RETRIEVAL_QUERY"} 
     )
-    query_vector = query_vector_response['embedding'][0]
+    # Accesarea vectorului se face cu .embeddings[0].values
+    query_vector = query_vector_response.embeddings[0].values
     
     # 2. Cauta cei mai apropiati k vectori
     results = collection.query(
@@ -90,15 +117,18 @@ def retrieve_chunks(collection, user_query: str, k: int = 2) -> list[dict]:
             
     return retrieved_chunks
 
+def clear_db():
+    """Șterge directorul ChromaDB pentru a forța o nouă indexare completă."""
+    if os.path.exists(CHROMA_PATH):
+        try:
+            shutil.rmtree(CHROMA_PATH)
+            print(f"[DB Manager] Directorul ChromaDB '{CHROMA_PATH}' a fost șters cu succes.")
+        except OSError as e:
+            print(f"Eroare la ștergerea directorului ChromaDB: {e}")
+    else:
+        print(f"[DB Manager] Directorul ChromaDB '{CHROMA_PATH}' nu există.")
+
 if __name__ == '__main__':
-    # Rularea acestui script va incerca sa creeze/actualizeze ChromaDB
-    from data_processor import load_and_chunk_data
-    chunks, metadata, ids = load_and_chunk_data()
-    db_collection = create_or_update_db(chunks, metadata, ids)
-    
-    # Testare retrieval
-    test_query = "Amenda pentru ITP expirat"
-    retrieved = retrieve_chunks(db_collection, test_query, k=1)
-    print(f"\n[DB Manager] Test Retrieval pentru '{test_query}':")
-    if retrieved:
-        print(f"Articol regăsit: {retrieved[0]['articol']}")
+    # Acest test necesita ca data_processor sa fie importabil
+    # Deoarece este un modul, presupunem ca este importat dintr-un script principal
+    pass

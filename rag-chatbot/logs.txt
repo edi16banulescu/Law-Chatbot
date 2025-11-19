@@ -1,0 +1,17 @@
+============================================================
+Agent Conversațional (RAG) - Procesare întrebare: 'Care sunt sancțiunile pentru ITP expirat?'
+============================================================
+[PAS 1] Segmentare finalizată. Număr de articole (chunks): 384
+[DB Manager] Baza de date ChromaDB a fost deja populată (384 articole).
+
+############################################################
+RĂSPUNS FINAL FURNIZAT DE GEMINI (Fundamentat RAG)
+############################################################
+Contextul furnizat nu conține informații referitoare la sancțiunile pentru ITP expirat. Prin urmare, nu pot oferi un răspuns fundamentat pe baza acestui context.
+
+(Fundamentat pe legislația: OUG 195/2002 - Articolul 17, OUG 195/2002 - Articolul 109, OUG 195/2002 - Articolul 9)
+
+
+------------------------------------------------------------
+
+
