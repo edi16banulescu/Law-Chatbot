@@ -1,17 +1,57 @@
 ============================================================
-Agent Conversațional (RAG) - Procesare întrebare: 'Care sunt sancțiunile pentru ITP expirat?'
+Întrebare Originală: 'Care sunt sancțiunile pentru ITP expirat?'
+... Se optimizează interogarea cu Gemini ...
+Întrebare Transformată (Juridic): 'Care sunt sancțiunile contravenționale aplicabile pentru conducerea unui vehicul a cărui inspecție tehnică periodică nu este valabilă?'
 ============================================================
-[PAS 1] Segmentare finalizată. Număr de articole (chunks): 384
-[DB Manager] Baza de date ChromaDB a fost deja populată (384 articole).
+[PAS 1] Segmentare finalizată. Total segmente: 889
+[DB Manager] Generare embedding-uri reale... Așteptați...
+  > Procesează lotul 1 de 100 articole...
+  > Procesează lotul 2 de 100 articole...
+  > Procesează lotul 3 de 100 articole...
+  > Procesează lotul 4 de 100 articole...
+  > Procesează lotul 5 de 100 articole...
+  > Procesează lotul 6 de 100 articole...
+  > Procesează lotul 7 de 100 articole...
+  > Procesează lotul 8 de 100 articole...
+  > Procesează lotul 9 de 89 articole...
+[DB Manager] Baza de date ChromaDB 'CodRutier_RAG' populată cu 889 articole.
+
+DEBUG: Top 3 Articole găsite:
+  [1] OUG 195/2002 - Articolul 102 (pct 1.) -> ...OUG 195/2002 - Art. 102 (1.) Art. 102
+(1) Constituie contrav...
+  [2] HG 1391/2006 - Articolul 9 -> ...Art. 9. – (1) Până la înmatriculare sau înregistrare, vehicu...
+  [3] OUG 195/2002 - Articolul 2 -> ...art. 2 alin. (2) lit. e) din Regulamentul (UE) nr. 168/2013 ...
 
 ############################################################
-RĂSPUNS FINAL FURNIZAT DE GEMINI (Fundamentat RAG)
+RĂSPUNS FINAL:
+Conform contextului legislativ furnizat:
+
+1.  **Sancțiune contravențională (amendă):** Conducerea pe drumurile publice a unui vehicul înregistrat al cărui termen de valabilitate a inspecției tehnice periodice a expirat constituie o contravenție și se sancționează cu **amenda prevăzută în clasa a IV-a de sancțiuni** [OUG 195/2002 - Articolul 102 (pct 1.)].
+2.  **Sancțiune complementară (reținerea certificatului de înmatriculare):** Certificatul de înmatriculare sau de înregistrare se reține de către poliția rutieră dacă vehiculul înregistrat nu are efectuată inspecția tehnică periodică valabilă. În acest caz, polițistul rutier eliberează conducătorului de vehicul o **dovadă înlocuitoare cu drept de circulație pentru 15 zile** [OUG 195/2002 - Articolul 112 (1) a) și (2)].
+
+(Surse identificate: HG 1391/2006 - Articolul 9, OUG 195/2002 - Articolul 10, OUG 195/2002 - Articolul 101 (pct 1.), OUG 195/2002 - Articolul 101 (pct 18.), OUG 195/2002 - Articolul 101 (pct 4.))
 ############################################################
-Contextul furnizat nu conține informații referitoare la sancțiunile pentru ITP expirat. Prin urmare, nu pot oferi un răspuns fundamentat pe baza acestui context.
-
-(Fundamentat pe legislația: OUG 195/2002 - Articolul 17, OUG 195/2002 - Articolul 109, OUG 195/2002 - Articolul 9)
 
 
-------------------------------------------------------------
 
+============================================================
+Întrebare Originală: 'Ce amenda iau daca merg fara placute de inmatriculare?'
+... Se optimizează interogarea cu Gemini ...
+Întrebare Transformată (Juridic): 'Ce sancțiune contravențională se aplică pentru fapta de a conduce un vehicul fără plăcuțe cu numărul de înmatriculare?'
+============================================================
+[PAS 1] Segmentare finalizată. Total segmente: 889
+[DB Manager] Baza de date ChromaDB a fost deja populată (889 articole).
 
+DEBUG: Top 3 Articole găsite:
+  [1] OUG 195/2002 - Articolul 99 (pct 17.) -> ...OUG 195/2002 - Art. 99 (17.) Art. 99
+(1) Constituie contrave...
+  [2] OUG 195/2002 - Articolul 99 (pct 16.) -> ...OUG 195/2002 - Art. 99 (16.) Art. 99
+(1) Constituie contrave...
+  [3] OUG 195/2002 - Articolul 15 (pct 7.) -> ...OUG 195/2002 - Art. 15 (7.) art. 15 alin. (5), cu excepţia c...
+
+############################################################
+RĂSPUNS FINAL:
+Nu am găsit informația în articolele regăsite. Articolul 15 (pct 4.) descrie fapta de a conduce pe drumurile publice un vehicul fără a avea montată una dintre plăcuţele cu numărul de înmatriculare sau de înregistrare ori dacă plăcuţele nu sunt fixate în locurile special destinate, dar nu specifică amenda sau clasa de sancțiuni pentru această faptă.
+
+(Surse identificate: OUG 195/2002 - Articolul 101 (pct 18.), OUG 195/2002 - Articolul 102 (pct 3.), OUG 195/2002 - Articolul 102 (pct 5.), OUG 195/2002 - Articolul 15 (pct 1.), OUG 195/2002 - Articolul 15 (pct 2.))
+############################################################

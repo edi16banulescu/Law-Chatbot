@@ -1,108 +1,170 @@
 import os
+import sys
 from google import genai
 from google.genai.errors import APIError
 from data_processor import load_and_chunk_data
-# Importam functiile necesare din vector_db_manager
 
 # --- Configuratii LLM ---
 GENERATION_MODEL = 'gemini-2.5-flash'
 
 def get_gemini_client():
-    """Initializeaza clientul Gemini si verifica existenta API Key."""
-    # Cheia API este citita direct din variabilele de mediu
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        raise ValueError("GEMINI_API_KEY nu este setată. Verificați variabila de mediu.")
+        raise ValueError("GEMINI_API_KEY nu este setată.")
     return genai.Client(api_key=api_key)
 
-def generate_response_with_llm(retrieved_chunks: list[dict], user_query: str) -> str:
-    """Generează răspunsul final, fundamentat pe context, folosind Gemini API."""
-    
+def optimize_query_with_llm(user_query: str) -> str:
+    """
+    Reformulează întrebarea utilizatorului în limbaj juridic folosind LLM.
+    """
     client = get_gemini_client()
     
-    # 1. Construim Contextul Sursă pentru LLM
-    context_text = "\n".join([f"[{chunk['articol']}]: {chunk['text']}" for chunk in retrieved_chunks])
-    citations = ", ".join([chunk['articol'] for chunk in retrieved_chunks])
-
-    # 2. Prompt Engineering (Asigură acuratețea juridică)
-    system_prompt = (
-        "Ești un expert în Codul Rutier Român. Răspunde concis și în limba română la întrebarea utilizatorului "
-        "bazându-te **doar** pe CONTEXTUL FURNIZAT. Asigură-te că citezi articolele legale relevante furnizate în context. "
-        "Dacă contextul nu conține informația, răspunde politicos că nu poți oferi un răspuns fundamentat."
+    optimization_prompt = (
+        "Ești un asistent specializat în legislația rutieră din România. "
+        "Sarcina ta este să REFORMULEZI întrebarea utilizatorului pentru a fi găsită ușor în OUG 195/2002, HG 1391/2006 și Codul Penal (Art. 334-338).\n"
+        "Reguli:\n"
+        "1. Înlocuiește termenii colocviali cu termeni legali (ex: 'carnet' -> 'permis de conducere', 'băut' -> 'sub influența alcoolului', 'dosar penal' -> 'infracțiune').\n"
+        "2. Păstrează sensul întrebării, dar fă-o să sune ca un text de lege.\n"
+        "3. Returnează DOAR întrebarea reformulată.\n\n"
+        f"Întrebare Utilizator: {user_query}\n"
+        "Întrebare Optimizată:"
     )
     
-    prompt = f"CONTEXT SURSĂ:\n---\n{context_text}\n---\n\nÎNTREBARE: {user_query}\n\nRĂSPUNS:"
+    try:
+        response = client.models.generate_content(
+            model=GENERATION_MODEL,
+            contents=[optimization_prompt]
+        )
+        return response.text.strip()
+    except Exception as e:
+        return user_query
+
+def generate_response_with_llm(retrieved_chunks: list[dict], user_query: str) -> str:
+    """
+    Generează răspunsul final bazat pe context.
+    """
+    client = get_gemini_client()
+    
+    context_text = "\n".join([f"[{chunk['articol']}]: {chunk['text']}" for chunk in retrieved_chunks])
+    citations = sorted(list(set([chunk['articol'] for chunk in retrieved_chunks])))
+    citations_str = ", ".join(citations[:5]) 
+
+    system_prompt = (
+        "Ești un asistent juridic expert în Codul Rutier Român și Infracțiuni Rutiere (OUG 195, HG 1391, Cod Penal). "
+        "Răspunde la întrebarea utilizatorului bazându-te **DOAR** pe CONTEXTUL FURNIZAT.\n"
+        "- Dacă fapta este o CONTRAVENȚIE (amendă), specifică clasa de sancțiuni sau punctele.\n"
+        "- Dacă fapta este o INFRACȚIUNE (închisoare), specifică pedeapsa conform Codului Penal din context.\n"
+        "- Citează articolul de lege relevant.\n"
+        "- Dacă informația nu există în context, spune clar 'Nu am găsit informația în articolele regăsite'."
+    )
+    
+    prompt = f"CONTEXT LEGISLATIV:\n---\n{context_text}\n---\n\nÎNTREBARE UTILIZATOR: {user_query}\n\nRĂSPUNS:"
     
     try:
         response = client.models.generate_content(
             model=GENERATION_MODEL,
             contents=[prompt],
-            config={
-                'system_instruction': system_prompt
-            }
+            config={'system_instruction': system_prompt}
         )
-        
-        # Adaugam citarile in raspunsul generat
         final_answer = response.text
-        if final_answer and citations:
-             final_answer += f"\n\n(Fundamentat pe legislația: {citations})"
-        
+        if final_answer:
+             final_answer += f"\n\n(Surse: {citations_str})"
         return final_answer
+    except Exception as e:
+        return f"Eroare generare: {e}"
+
+# --- FUNCTII MODUL INTERACTIV ---
+
+def initialize_rag_system():
+    print("\n" + "="*60)
+    print(" 🚗  INITIALIZARE AGENT RUTIER... ")
+    print("="*60)
     
-    except APIError as e:
-        return f"Eroare API la generarea răspunsului LLM: {e}"
-    except Exception as e:
-        return f"Eroare neașteptată: {e}"
+    reindex = input("Dorești re-indexarea completă a bazei de date? (da/nu) [nu]: ").lower().strip()
+    
+    if reindex in ['da', 'y', 'yes']:
+        print("... Ștergerea bazei de date vechi ...")
+        try:
+            from vector_db_manager import clear_db
+            clear_db()
+        except ImportError:
+            pass
 
+    print("... Încărcare și verificare Bază de Cunoștințe ...")
+    chunks_list, metadata_list, document_ids = load_and_chunk_data()
+    
+    if not chunks_list:
+        print("[EROARE] Nu s-au putut încărca datele. Verifică 'codul_rutier.txt'.")
+        sys.exit(1)
 
-# --- FUNCTIA PRINCIPALA (MAIN) ---
+    print(f"... Conectare la ChromaDB ({len(chunks_list)} segmente)...")
+    from vector_db_manager import create_or_update_db
+    collection = create_or_update_db(chunks_list, metadata_list, document_ids)
+    
+    print("\n✅ Sistem pregătit!")
+    return collection
 
-def run_rag_pipeline(user_input: str, k_results: int = 2):
-    """Ruleaza intregul pipeline RAG."""
-    print("=" * 60)
-    print(f"Agent Conversațional (RAG) - Procesare întrebare: '{user_input}'")
-    print("=" * 60)
+def process_query(collection, user_input, k_results=15):
+    # 1. Optimizare
+    print(" 🤖 (Gândesc...) Reformulez întrebarea...")
+    enhanced_query = optimize_query_with_llm(user_input)
+    
+    # 2. Retrieval
+    print(" 🔍 (Caut...) Analizez legislația...")
+    from vector_db_manager import retrieve_chunks
+    retrieved_chunks = retrieve_chunks(collection, enhanced_query, k=k_results)
+    
+    if not retrieved_chunks:
+        return "Nu am găsit articole relevante în baza de date."
 
+    # 3. Generation
+    print(" ✍️  (Scriu...) Generez răspunsul...")
+    answer = generate_response_with_llm(retrieved_chunks, user_input)
+    return answer
+
+def start_interactive_chat():
     try:
-        # 1. DATA ENGINEERING
-        chunks_list, metadata_list, document_ids = load_and_chunk_data()
-
-        if not chunks_list:
-            print("\n[INFO] Nu s-au putut încărca datele din fișier. Oprire pipeline.")
-            return
-
-        # 2. INDEXARE (Creeaza sau actualizeaza ChromaDB)
-        from vector_db_manager import create_or_update_db
-        vector_db_collection = create_or_update_db(chunks_list, metadata_list, document_ids)
-        
-        # 3. RETRIEVAL (Regasirea Articolelor)
-        from vector_db_manager import retrieve_chunks
-        retrieved_chunks = retrieve_chunks(vector_db_collection, user_input, k=k_results)
-
-        if not retrieved_chunks:
-            print("\n[INFO] Nu am putut regăsi articole relevante din Codul Rutier. Vă rugăm să reformulați întrebarea.")
-            return
-
-        # 4. GENERATION (Generarea Raspunsului real de catre LLM)
-        final_answer = generate_response_with_llm(retrieved_chunks, user_input)
-
-        print("\n" + "#" * 60)
-        print("RĂSPUNS FINAL FURNIZAT DE GEMINI (Fundamentat RAG)")
-        print("#" * 60)
-        print(final_answer)
-        
-    except ValueError as e:
-        print(f"\n[FATAL ERROR]: Eroare de configurare sau cheie API: {e}")
+        vector_db_collection = initialize_rag_system()
     except Exception as e:
-        print(f"\n[FATAL ERROR]: O eroare a întrerupt pipeline-ul: {e}")
+        print(f"[FATAL] Eroare la inițializare: {e}")
+        return
+
+    # --- DISCLAIMER LEGAL ---
+    print("\n" + "!" * 60)
+    print(" AVERTISMENT LEGAL:")
+    print(" Acest asistent este un proiect academic demonstrativ.")
+    print(" Informațiile oferite nu reprezintă consultanță juridică oficială.")
+    print(" Verificați întotdeauna legea în vigoare sau consultați un avocat.")
+    print("!" * 60)
+    
+    print("\nScrie 'exit' sau 'q' pentru a închide.")
+    print("-" * 60)
+
+    while True:
+        try:
+            user_input = input("\nTu: ").strip()
+            
+            if not user_input:
+                continue
+                
+            if user_input.lower() in ['exit', 'quit', 'q']:
+                print("La revedere! Drum bun! 🚗")
+                break
+            
+            response = process_query(vector_db_collection, user_input)
+            
+            print("\nAgent Rutier:")
+            print(response)
+            print("-" * 60)
+            
+        except KeyboardInterrupt:
+            print("\nLa revedere!")
+            break
+        except Exception as e:
+            print(f"\n[Eroare]: {e}")
 
 if __name__ == "__main__":
-    # USER QUERY
-    query1 = "Care sunt sancțiunile pentru ITP expirat?"
-    query2 = "Ce amenda iau daca merg fara placute de inmatriculare?"
-    
-    # Rulati prima interogare cu K mai mare pentru a include contextul necesar
-    run_rag_pipeline(query1, k_results=3) 
-    print("\n\n" + "-"*60 + "\n\n")
-    # Rulati a doua interogare cu K normal
-    # run_rag_pipeline(query2, k_results=2)
+    if not os.getenv("GEMINI_API_KEY"):
+        print("EROARE: Variabila de mediu GEMINI_API_KEY nu este setată!")
+    else:
+        start_interactive_chat()

@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "question": "Care sunt sancțiunile pentru ITP expirat?",
+      "expected_article_id": "102",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["amendă clasa a IV-a", "reținerea certificatului de înmatriculare", "9 la 20 puncte-amendă"]
+    },
+    {
+      "id": 2,
+      "question": "Ce pățesc dacă circul fără plăcuțe de înmatriculare?",
+      "expected_article_id": "334",
+      "expected_source": "Codul Penal",
+      "key_facts": ["infracțiune", "închisoare", "1 la 3 ani", "amendă penală"]
+    },
+    {
+      "id": 3,
+      "question": "Care este viteza maximă pe autostradă pentru categoria B?",
+      "expected_article_id": "50",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["130 km/h"]
+    },
+    {
+      "id": 4,
+      "question": "Este obligatorie purtarea centurii de siguranță?",
+      "expected_article_id": "36",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["obligatorie", "conducători", "pasageri", "excepții în regulament"]
+    },
+    {
+      "id": 5,
+      "question": "Ce se întâmplă dacă refuz recoltarea probelor biologice?",
+      "expected_article_id": "337",
+      "expected_source": "Codul Penal",
+      "key_facts": ["infracțiune", "închisoare", "1 la 5 ani"]
+    }
+  ]
