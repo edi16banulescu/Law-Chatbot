@@ -1,0 +1,528 @@
+==================================================
+RAPORT FINAL DE EVALUARE AUTOMATĂ
+==================================================
+Număr teste: 20
+Acuratețe Regăsire (Retrieval Accuracy): 40.00%
+Calitate Medie Răspuns (LLM Grade): 5.75/10
+
+DETALII PE CAZURI:
+ID: 1
+Întrebare: Care sunt sancțiunile pentru ITP expirat?
+Răspuns RAG: Conform contextului legislativ furnizat, sancțiunile pentru ITP expirat sunt următoarele:
+
+1.  **Contravenție și amendă**:
+    Constituie contravenție conducerea pe drumurile publice a unui vehicul înregistrat al cărui termen de valabilitate a inspecției tehnice periodice a expirat.
+    Această faptă se sancționează cu **amenda prevăzută în clasa a IV-a de sancțiuni**.
+    *Articolul citat: OUG 195/2002 - Art. 102 (1.)*
+
+2.  **Reținerea certificatului de înmatriculare**:
+    Certificatul de înmatriculare sau de înregistrare se reține de către poliția rutieră dacă vehiculul înregistrat nu are efectuată inspecția tehnică periodică valabilă ori aceasta este anulată.
+    Polițistul rutier eliberează conducătorului de vehicul o **dovadă înlocuitoare cu drept de circulație pentru 15 zile**.
+    Certificatul se restituie la prezentarea dovezii eliberate de către Registrul Auto Român din care rezultă că deficiența a fost remediată.
+    *Articole citate: OUG 195/2002 - Art. 112 (1) lit. a), Art. 112 (2), Art. 112 (5)*
+
+3.  **Suspendarea de drept a înmatriculării**:
+    Înmatricularea vehiculului se suspendă de drept la data expirării sau, după caz, a anulării inspecției tehnice periodice și încetează la data la care vehiculul trece o nouă inspecție tehnică periodică.
+    *Articolul citat: OUG 195/2002 - Art. 11 (4.5.)*
+
+De asemenea, este interzisă circulația pe drumurile publice a vehiculelor al căror termen de valabilitate a inspecției tehnice periodice a expirat ori este anulată.
+*Articolul citat: OUG 195/2002 - Articolul 10 (1)*
+
+(Surse: Codul Penal - Articolul 334, HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 181, HG 1391/2006 - Articolul 27, HG 1391/2006 - Articolul 9)
+Așteptat (Articol): OUG 195/2002 Art. 102
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 5/10
+--------------------------------------------------
+ID: 2
+Întrebare: Ce pățesc dacă circul fără plăcuțe de înmatriculare?
+Răspuns RAG: Conducerea pe drumurile publice a unui vehicul fără a avea montată una dintre plăcuţele cu numărul de înmatriculare sau de înregistrare ori dacă plăcuţele cu numărul de înmatriculare ori de înregistrare nu sunt fixate în locurile special destinate constituie o contravenție.
+
+Obligația de a purta plăcuțele cu numărul de înmatriculare sau de înregistrare este prevăzută în:
+*   **OUG 195/2002 - Articolul 12 (2)**: "Pentru a circula pe drumurile publice, vehiculele înmatriculate ori înregistrate, după caz, trebuie să poarte plăcuţe cu numărul de înmatriculare sau de înregistrare, cu forme, dimensiuni şi conţinut prevăzute de standardele în vigoare."
+*   **HG 1391/2006 - Articolul 26 (1)**: "Proprietarul sau deţinătorul legal trebuie să fixeze plăcuţele cu numărul de înmatriculare sau de înregistrare în locurile special destinate, la partea din faţă şi din spate a autovehiculului sau tramvaiului, după caz, iar la motocicletă şi la remorcă, numai la partea din spate."
+*   **HG 1391/2006 - Articolul 26 (2)**: "Se interzice circulaţia pe drumurile publice a vehiculelor care nu au montate plăcuţele cu numărul de înmatriculare sau, după caz, de înregistrare, în locurile stabilite."
+
+Fapta de a conduce fără plăcuțe sau cu plăcuțe nefixate în locurile special destinate este menționată în:
+*   **OUG 195/2002 - Articolul 15 (pct 4.)**: "conducerea pe drumurile publice a unui vehicul fără a avea montată una dintre plăcuţele cu numărul de înmatriculare sau de înregistrare ori dacă plăcuţele cu numărul de înmatriculare ori de înregistrare nu sunt fixate în locurile special destinate;"
+
+Conform contextului furnizat, deși fapta este clar definită ca o contravenție în OUG 195/2002 - Articolul 15 (pct 4.), nu am găsit informația detaliată despre clasa de sancțiuni sau punctele de penalizare aferente acestei contravenții. Articolul 15 (pct 4.) face referire la "art. 15 alin. (5)", însă textul furnizat pentru Articolul 15 (pct 5.) descrie o altă contravenție și nu specifică o clasă de sancțiuni sau puncte de penalizare.
+
+(Surse: HG 1391/2006 - Articolul 14, HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 182, HG 1391/2006 - Articolul 26, OUG 195/2002 - Articolul 10)
+Așteptat (Articol): Codul Penal Art. 334
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------
+ID: 3
+Întrebare: Care este viteza maximă pe autostradă pentru categoria B?
+Răspuns RAG: Viteza maximă pe autostradă pentru autovehiculele din categoria B este de 130 km/h.
+
+Acest lucru este stipulat în Articolul 50 alineatul (1) litera a) din OUG 195/2002.
+
+(Surse: HG 1391/2006 - Articolul 121, HG 1391/2006 - Articolul 123, HG 1391/2006 - Articolul 169, HG 1391/2006 - Articolul 170, HG 1391/2006 - Articolul 20 (pct 2.))
+Așteptat (Articol): OUG 195/2002 Art. 50
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 4
+Întrebare: Este obligatorie purtarea centurii de siguranță?
+Răspuns RAG: Da, purtarea centurii de siguranță este obligatorie, cu anumite excepții.
+
+Conform CONTEXTULUI FURNIZAT:
+
+**Obligația generală:**
+*   **Conducătorii de autovehicule și tractoare agricole sau forestiere și persoanele care ocupă locuri prevăzute prin construcție cu centuri sau dispozitive de siguranță omologate trebuie să le poarte în timpul circulației pe drumurile publice.** (OUG 195/2002 - Articolul 36 alin. 1)
+
+**Obligații specifice pentru șoferi privind pasagerii minori:**
+*   Conducătorii de autovehicule având locuri prevăzute prin construcție cu centuri de siguranță au obligația să se asigure că, pe timpul conducerii vehiculului, minorii poartă centurile de siguranță sau sunt transportați numai în dispozitive de fixare în scaune pentru copii omologate, în condițiile prevăzute de regulament. (OUG 195/2002 - Articolul 36 alin. 1.2)
+*   **Copiii cu vârsta sub 12 ani sau cu înălțimea sub 150 cm trebuie să poarte centuri de siguranță adaptate greutății și dimensiunilor lor, iar cei cu vârsta sub 3 ani se transportă numai în dispozitive de reținere omologate.** (HG 1391/2006 - Articolul 97 alin. 1)
+*   **Conducătorilor de autovehicule le este interzis să transporte copii cu vârstă de până la 12 ani pe scaunul din față, chiar dacă sunt ținuți în brațe de persoane majore, în timpul deplasării pe drumurile publice.** (HG 1391/2006 - Articolul 97 alin. 2)
+*   Conducătorilor de autovehicule le este interzis să transporte copii în vârstă de până la 3 ani în autovehicule care nu sunt echipate cu sisteme de siguranță, cu excepția celor destinate transportului public de persoane, precum și a taxiurilor dacă în acestea din urmă ocupă orice alt loc decât cel de pe scaunul din față. Copiii cu vârsta de peste 3 ani, având o înălțime de până la 150 cm, pot fi transportați în autovehicule care nu sunt echipate cu sisteme de siguranță doar dacă ocupă, pe timpul transportului, orice alt loc decât cel de pe scaunul din față. (OUG 195/2002 - Articolul 36 alin. 1.3)
+
+**Excepții de la obligația de a purta centura de siguranță:**
+*   Conducătorii de autoturisme pe timpul executării manevrei de mers înapoi sau care staționează.
+*   Femeile în stare vizibilă de graviditate.
+*   Conducătorii de autoturisme care execută servicii de transport public de persoane, în regim de taxi, când transportă pasageri.
+*   Persoanele care au certificat medical în care să fie menționată afecțiunea care contraindică purtarea centurii de siguranță (acestea sunt obligate să aibă certificatul asupra lor).
+*   Instructorii auto pe timpul pregătirii practice a persoanelor care învață să conducă un autovehicul pe drumurile publice sau examinatorul din cadrul autorității competente în timpul desfășurării probelor practice ale examenului pentru obținerea permisului de conducere.
+(HG 1391/2006 - Articolul 97 alin. 4 și 5)
+
+**Sancțiuni pentru nerespectare:**
+*   **Pentru conducătorul de autovehicul:** Nerespectarea obligației de a purta centura de siguranță este o contravenție și se sancționează cu **amenda prevăzută în clasa a III-a de sancțiuni**. (OUG 195/2002 - Articolul 108 pct. 3)
+*   **Pentru pasageri:** Nerespectarea obligației de a purta centura de siguranță este o contravenție și se sancționează cu **amenda prevăzută în clasa I de sancțiuni**. (OUG 195/2002 - Articolul 99 pct. 8)
+*   **Pentru conducătorul de autovehicul care nu se asigură că minorii poartă centurile de siguranță:** Nerespectarea acestei obligații este o contravenție și se sancționează cu **amenda prevăzută în clasa a IV-a de sancțiuni**. (OUG 195/2002 - Articolul 108 pct. 9, corelat cu Art. 36 alin. 1.2)
+
+(Surse: HG 1391/2006 - Articolul 148 (pct 10.), HG 1391/2006 - Articolul 148 (pct 11.), HG 1391/2006 - Articolul 148 (pct 4.), HG 1391/2006 - Articolul 97, OUG 195/2002 - Articolul 101 (pct 7.))
+Așteptat (Articol): OUG 195/2002 Art. 36
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 5
+Întrebare: Ce se întâmplă dacă refuz recoltarea probelor biologice?
+Răspuns RAG: Refuzul sau sustragerea de la prelevarea de mostre biologice, necesare în vederea stabilirii alcoolemiei ori a prezenţei unor substanţe psihoactive, de către conducătorul unui vehicul pentru care legea prevede obligativitatea deţinerii permisului de conducere, constituie o infracțiune.
+
+Pedeapsa prevăzută este închisoarea de la unu la 5 ani.
+
+**Articolul de lege relevant:** Art. 337 din Codul Penal.
+
+(Surse: Codul Penal - Articolul 337, HG 1391/2006 - Articolul 185, HG 1391/2006 - Articolul 186, HG 1391/2006 - Articolul 187, HG 1391/2006 - Articolul 188)
+Așteptat (Articol): Codul Penal Art. 337
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 6
+Întrebare: Care sunt regulile pentru depășirea pe drumurile publice?
+Răspuns RAG: Conform CONTEXTULUI FURNIZAT:
+
+Articolul 46 din OUG 195/2002 specifică faptul că: "Obligaţiile conducătorilor vehiculelor care efectuează depăşirea şi ale conducătorilor vehiculelor care sunt depăşite, precum şi cazurile în care depăşirea este interzisă se stabilesc prin regulament."
+
+De asemenea, Articolul 142 lit. p) din HG 1391/2006 menționează o interdicție generală de oprire voluntară în "locurile unde este interzisă depăşirea", însă nu detaliază care sunt aceste locuri sau celelalte reguli specifice depășirii.
+
+Nu am găsit informația în articolele regăsite, cu privire la regulile concrete de efectuare a depășirii pe drumurile publice, în afara mențiunii că acestea sunt stabilite prin regulament.
+
+(Surse: HG 1391/2006 - Articolul 127, HG 1391/2006 - Articolul 142, HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 182, HG 1391/2006 - Articolul 4)
+Așteptat (Articol): OUG 195/2002 Art. 69
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------
+ID: 7
+Întrebare: Ce documente sunt necesare pentru a conduce un autovehicul?
+Răspuns RAG: Conform contextului legislativ furnizat, pentru a conduce un autovehicul sunt necesare următoarele documente:
+
+1.  Actul de identitate.
+2.  Permisul de conducere.
+3.  Certificatul de înmatriculare sau de înregistrare a vehiculului condus.
+4.  Atestatul profesional, după caz.
+5.  Documentele referitoare la bunurile transportate (dacă este cazul).
+6.  Alte documente prevăzute de lege, care pot include dovada asigurării obligatorii pentru răspundere civilă în caz de pagube produse terţilor prin accidente de circulaţie (RCA), conform Articolului 76 alineatul (1) din OUG 195/2002.
+
+**Articole relevante:**
+*   **HG 1391/2006 - Art. 147 (1)**: "Conducătorul de autovehicul sau tramvai este obligat: ... : Să aibă asupra sa actul de identitate, permisul de conducere, certificatul de înmatriculare sau de înregistrare şi, după caz, atestatul profesional, precum şi celelalte documente prevăzute de legislaţia în vigoare."
+*   **OUG 195/2002 - Art. 35 (2)**: "Participanţii la trafic sunt obligaţi ca, la cererea poliţistului rutier, să înmâneze acestuia documentul de identitate sau, după caz, permisul de conducere, documentul de înmatriculare ori de înregistrare a vehiculului condus, documentele referitoare la bunurile transportate, precum şi alte documente prevăzute de lege."
+*   **OUG 195/2002 - Art. 76 (1)**: "Vehiculele înmatriculate sau înregistrate, cu excepţia celor cu tracţiune animală, care circulă pe drumurile publice, trebuie să aibă asigurare obligatorie pentru răspundere civilă în caz de pagube produse terţilor prin accidente de circulaţie, conform legii."
+
+(Surse: HG 1391/2006 - Articolul 147 (pct 1.), HG 1391/2006 - Articolul 184, HG 1391/2006 - Articolul 26, HG 1391/2006 - Articolul 27, OUG 195/2002 - Articolul 10)
+Așteptat (Articol): OUG 195/2002 Art. 7
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 8
+Întrebare: Care sunt condițiile pentru obținerea unui permis de conducere?
+Răspuns RAG: Conform CONTEXTULUI FURNIZAT, condițiile pentru obținerea unui permis de conducere sunt detaliate în funcție de situație:
+
+**I. Documente necesare pentru eliberarea unui nou permis de conducere (preschimbare, pierdere, furt, distrugere sau expirare):**
+Eliberarea unui nou permis de conducere se efectuează în baza următoarelor documente, conform Art. 44 alin. (1) din HG 1391/2006:
+a) fișa deținătorului permisului de conducere;
+b) originalul și copia actului de identitate;
+c) dovada plății contravalorii permisului de conducere și a taxei de eliberare a acestui document;
+d) permisul de conducere a cărui preschimbare se solicită, în original, dacă acesta există.
+e) fișa medicală tip din care să rezulte că este apt pentru a conduce autovehicule sau tramvaie, dacă solicitarea preschimbării s-a făcut după expirarea valabilității administrative a permisului de conducere.
+
+Adițional, conform Art. 44 alin. (2) din HG 1391/2006:
+a) în cazul schimbării numelui - documentul care atestă acest lucru, în original și copie;
+b) în cazul pierderii, furtului sau distrugerii - dovada publicării anunțului prevăzut la Art. 106 sau 106.1 din OUG 195/2002.
+
+**II. Obținerea unui nou permis de conducere fără susținerea unui examen:**
+Conform Art. 4 alin. (6.3) și Art. 22 alin. (5.3) din OUG 195/2002, se poate prezenta la autoritatea competentă pentru eliberarea unui nou permis de conducere, fără a mai susține examen, în situația în care anularea permisului de conducere nu a fost dispusă până la depunerea cererii de restituire de către titularul permisului de conducere, condamnat definitiv pentru o infracțiune care a fost dezincriminată, cu prezentarea documentului care atestă o astfel de situație.
+
+**III. Condiții pentru a se prezenta la examen pentru obținerea unui permis de conducere (după anulare):**
+Titularii permiselor de conducere anulate au dreptul de a se prezenta la examen pentru obținerea permisului de conducere, respectiv pentru obținerea unui nou permis de conducere, după caz, dacă a intervenit una dintre următoarele situații, conform Art. 115 alin. (1) din OUG 195/2002:
+a) au trecut 6 luni de la data executării pedepsei amenzii sau a pedepsei în regim de privare de libertate;
+b) a trecut un an de la data grațierii totale ori a restului de pedeapsă, de la data rămânerii definitive a hotărârii judecătorești prin care s-a dispus suspendarea executării pedepsei sub supraveghere sau de la data împlinirii termenului de prescripție a executării pedepsei;
+c) a intervenit amnistia;
+d) interzicerea dreptului de a conduce anumite categorii de vehicule stabilită de instanță, prevăzută la Art. 97 alin. (4) din OUG 195/2002;
+g) în baza rezultatului analizei mostrelor biologice prin care s-a stabilit absența în organism a substanțelor psihoactive.
+
+Nu am găsit informația în articolele regăsite referitoare la condițiile generale de obținere a permisului de conducere pentru un solicitant inițial (ex: vârsta minimă, probele de examen inițiale, școala de șoferi).
+
+(Surse: HG 1391/2006 - Articolul 114, HG 1391/2006 - Articolul 202, HG 1391/2006 - Articolul 212, HG 1391/2006 - Articolul 219, HG 1391/2006 - Articolul 44)
+Așteptat (Articol): OUG 195/2002 Art. 9
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 5/10
+--------------------------------------------------
+ID: 9
+Întrebare: Ce sancțiuni există pentru conducerea sub influența alcoolului?
+Răspuns RAG: Sancțiunile pentru conducerea sub influența alcoolului, conform contextului legislativ furnizat, sunt următoarele:
+
+1.  **Infracțiune (faptă penală):**
+    *   **Condiție:** Conducerea pe drumurile publice a unui vehicul pentru care legea prevede obligativitatea deținerii permisului de conducere de către o persoană care, la momentul prelevării mostrelor biologice, are o îmbibație alcoolică de **peste 0,80 g/l alcool pur în sânge**.
+    *   **Pedeapsă:** Închisoare de la unu la 5 ani sau cu amendă.
+    *   **Articol relevant:** Codul Penal - Articolul 336 (1).
+
+2.  **Contravenție:**
+    *   **Condiție:** Conducerea sub influența băuturilor alcoolice, **dacă fapta nu constituie, potrivit legii, infracțiune** (adică, sub pragul de 0,80 g/l alcool pur în sânge).
+    *   **Sancțiuni:**
+        *   Amendă prevăzută în **clasa a IV-a de sancțiuni**.
+        *   Sancțiunea complementară a **suspendării exercitării dreptului de a conduce pentru o perioadă de 90 de zile**.
+    *   **Articol relevant:** OUG 195/2002 - Articolul 108 (3) a).
+
+**Alte obligații și consecințe imediate legate de depistarea sub influența alcoolului:**
+
+*   **Obligația de a se supune recoltării mostrelor biologice:** Persoana care conduce pe drumurile publice un vehicul pentru care legea prevede obligativitatea deținerii unui permis de conducere și este testată de polițistul rutier cu un mijloc tehnic și depistată ca având o concentrație de **peste 0,40 mg/l alcool pur în aerul expirat** este obligată să se supună recoltării mostrelor biologice pentru stabilirea alcoolemiei. (OUG 195/2002 - Articolul 336 (3), HG 1391/2006 - Articolul 185 (2) a)). Această obligație este valabilă și în cazul accidentelor de circulație soldate doar cu pagube materiale, dacă rezultatul testării arată o concentrație mai mare de 0,40 mg/l alcool pur în aerul expirat. (HG 1391/2006 - Articolul 186).
+*   **Retragerea permisului de conducere:** În situația în care rezultatul testării cu un mijloc tehnic certificat sau omologat și verificat metrologic arată o concentrație de alcool **mai mare de 0,40 mg/l alcool pur în aerul expirat**, conducătorul de autovehicul sau tramvai trebuie însoțit la o instituție medicală pentru recoltarea probelor biologice. După recoltare, polițistul rutier reține permisul de conducere și eliberează o dovadă înlocuitoare fără drept de circulație. (HG 1391/2006 - Articolul 193 (1) și (2)).
+*   **Imobilizarea vehiculului:** Se dispune imobilizarea vehiculului dacă persoana se află sub influența băuturilor alcoolice sau a substanțelor psihoactive, iar conducerea vehiculului nu poate fi asigurată pe loc de o altă persoană. (OUG 195/2002 - Articolul 117 (1) e)).
+
+(Surse: Codul Penal - Articolul 335, Codul Penal - Articolul 336, HG 1391/2006 - Articolul 185, HG 1391/2006 - Articolul 186, HG 1391/2006 - Articolul 187)
+Așteptat (Articol): Codul Penal Art. 336
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 10
+Întrebare: Care sunt regulile privind utilizarea telefonului mobil în timpul conducerii?
+Răspuns RAG: Conform contextului legislativ furnizat, regulile privind utilizarea telefonului mobil în timpul conducerii sunt următoarele:
+
+1.  **Interdicție generală**: Conducătorilor de vehicule le este interzisă folosirea telefoanelor mobile atunci când se află în timpul deplasării pe drumurile publice.
+    *   **Excepție**: Această interdicție nu se aplică în cazul folosirii dispozitivelor tip "mâini libere".
+    *   **Articol relevant**: OUG 195/2002 - Art. 36 (3), OUG 195/2002 - Art. 35 (19.), OUG 195/2002 - Art. 15 (6.)
+
+2.  **Sancțiune pentru utilizarea telefonului mobil (fără dispozitiv "mâini libere")**: Această faptă constituie o contravenție și se sancționează cu 6 puncte de penalizare.
+    *   **Articol relevant**: OUG 195/2002 - Art. 15 (6.) lit. d)
+
+3.  **Caz agravant**: De asemenea, este interzisă folosirea telefoanelor mobile atunci când conducătorii de vehicule se află în timpul deplasării pe drumurile publice, cu excepția celor prevăzute cu dispozitive tip "mâini libere", concomitent cu încălcarea unei reguli pentru circulaţia vehiculelor. Această faptă este menționată ca o contravenție.
+    *   **Articol relevant**: OUG 195/2002 - Art. 79 alin. (2) lit. h).
+    *   **Sancțiune**: Nu am găsit informația privind clasa de sancțiuni sau punctele de penalizare specifice pentru fapta descrisă la OUG 195/2002 - Art. 79 alin. (2) lit. h) în articolele regăsite.
+
+(Surse: HG 1391/2006 - Articolul 127, HG 1391/2006 - Articolul 128, HG 1391/2006 - Articolul 145, HG 1391/2006 - Articolul 148 (pct 13.), HG 1391/2006 - Articolul 148 (pct 7.))
+Așteptat (Articol): OUG 195/2002 Art. 110
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 11
+Întrebare: Ce trebuie să fac în caz de accident rutier?
+Răspuns RAG: Nu am găsit informația în articolele regăsite. Deși există o secțiune intitulată "Obligaţii în caz de accident", articolul 100 din OUG 195/2002, așa cum este furnizat în context, nu detaliază ce trebuie să facă un participant la trafic în cazul producerii unui accident rutier. Articolul 52 (3) menționează doar că organizatorii evenimentelor rutiere răspund administrativ, contravențional, civil sau penal, după caz, dar nu oferă instrucțiuni pentru persoanele implicate într-un accident.
+
+(Surse: HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 148 (pct 2.), HG 1391/2006 - Articolul 161, HG 1391/2006 - Articolul 2 (pct 4.), HG 1391/2006 - Articolul 4)
+Așteptat (Articol): OUG 195/2002 Art. 180
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------
+ID: 12
+Întrebare: Care sunt regulile pentru circulația bicicletelor pe drumurile publice?
+Răspuns RAG: Regulile pentru circulația bicicletelor pe drumurile publice, conform contextului legislativ furnizat, sunt următoarele:
+
+**I. Reguli Generale de Circulație:**
+
+*   **Statut:** Bicicletele sunt vehicule care nu sunt supuse înmatriculării sau înregistrării. (OUG 195/2002 - Articolul 12, alin. 1, lit. b)
+*   **Condiții de circulație:** Pot circula pe drumurile publice numai în condițiile prevăzute prin regulament. (OUG 195/2002 - Articolul 12, alin. 3)
+*   **Poziția pe drum:**
+    *   Trebuie conduse pe partea din dreapta a drumului public, în sensul de circulație, cât mai aproape de marginea părții carosabile, cu respectarea semnificației semnalizării rutiere și a regulilor de circulație. (OUG 195/2002 - Articolul 41, alin. 1)
+    *   Dacă un drum este prevăzut cu o pistă pentru biciclete, semnalizată ca atare, bicicletele vor fi conduse numai pe această pistă. Este interzisă circulația altor participanți la trafic pe pista pentru biciclete. (OUG 195/2002 - Articolul 41, alin. 3; HG 1391/2006 - Articolul 160, alin. 3)
+    *   Trebuie conduse numai pe drumurile, părţile carosabile, benzile sau pistele stabilite pentru categoria din care fac parte. (HG 1391/2006 - Articolul 100)
+    *   În cazul în care pe drumurile publice nu sunt amenajate benzi sau piste speciale, bicicletele pot fi conduse și pe acostament în sensul de mers, dacă circulația se poate face fără pericol. (HG 1391/2006 - Articolul 100)
+    *   Atunci când circulă pe drumul public, trebuie conduse numai pe un singur rând. (HG 1391/2006 - Articolul 160, alin. 1)
+*   **Viteza:** Se interzice conducătorilor de biciclete să circule cu o viteză mai mare de 30 km/h. (HG 1391/2006 - Articolul 99, alin. 2)
+
+**II. Interdicții Specifice (HG 1391/2006 - Articolul 161, alin. 1, dacă nu se specifică altfel):**
+
+*   Să circule pe sectoarele de drum semnalizate cu indicatorul având semnificaţia „Accesul interzis bicicletelor”. (lit. a)
+*   Să înveţe să conducă biciclete pe drumurile intens circulate. (lit. b)
+*   Să circule pe trotuare, cu excepţia cazului când pe acestea sunt amenajate piste speciale destinate lor. (lit. c)
+*   Să circule fără a ţine cel puţin o mână pe ghidon şi ambele picioare pe pedale. (lit. d)
+*   Să circule în paralel, cu excepţia situaţiilor când participă la competiţii sportive organizate. (lit. e)
+*   Să circule în timp ce se află sub influenţa alcoolului, a produselor ori substanţelor stupefiante sau a medicamentelor cu efecte similare acestora. (lit. f)
+*   Să se ţină de un vehicul aflat în mers ori să fie remorcat de un alt vehicul sau împins ori tras de o persoană aflată într-un vehicul. (lit. g)
+*   Să transporte o altă persoană, cu excepţia copilului până la 7 ani, numai dacă vehiculul are montat în faţă un suport special, precum şi a situaţiei când vehiculul este construit şi/sau echipat special pentru transportul altor persoane. (lit. h)
+*   Să circule pe partea carosabilă în aceeaşi direcţie de mers, dacă există o cale laterală, o potecă sau un acostament practicabil, ce pot fi folosite. (lit. i)
+*   Să transporte sau să tragă orice fel de obiecte care, prin volumul ori greutatea lor, stânjenesc sau periclitează conducerea vehiculului ori circulaţia celorlalţi participanţi la trafic. (lit. j)
+*   Să circule pe aleile din parcuri sau grădini publice, cu excepţia cazurilor când nu stânjenesc circulaţia pietonilor. (lit. k)
+*   Să circule pe timp de noapte sau când vizibilitatea este redusă, fără să îndeplinească condiţiile prevăzute la art. 14 şi 16. (lit. l) **Nu am găsit informația în articolele regăsite despre condițiile specifice de la Art. 14 și 16.**
+*   Să circule atunci când partea carosabilă este acoperită cu polei, gheaţă sau zăpadă. (lit. m)
+*   Să circule cu defecţiuni tehnice la sistemele de frânare sau cu un vehicul care nu este prevăzut cu avertizor sonor. (lit. n)
+*   Să traverseze drumurile publice, pe trecerile destinate pietonilor, în timp ce se deplasează pe bicicletă. (lit. o)
+*   Să circule pe alte benzi decât cea de lângă bordură sau acostament, cu excepţia cazurilor în care, înainte de intersecţie, trebuie să se încadreze regulamentar pentru efectuarea virajului la stânga. (lit. p)
+*   Să circule fără a purta îmbrăcăminte cu elemente fluorescent – reflectorizante, de la lăsarea serii până în zorii zilei sau atunci când vizibilitatea este redusă. (lit. r)
+*   Să conducă vehiculul fără a menţine contactul roţilor cu solul. (lit. s)
+
+**III. Obligații Specifice:**
+
+*   Conducătorii de biciclete sunt obligaţi să aibă asupra lor actul de identitate. (HG 1391/2006 - Articolul 161, alin. 2)
+*   Să circule pe pista pentru biciclete dacă există. (OUG 195/2002 - Articolul 41, alin. 3; HG 1391/2006 - Articolul 160, alin. 3)
+
+**IV. Recomandări:**
+
+*   Se recomandă ca, în circulaţia pe drumurile publice, biciclistul să poarte casca de protecţie omologată. (HG 1391/2006 - Articolul 160, alin. 4)
+
+**V. Contravenții (OUG 195/2002 - Articolul 101, alin. 1, pct. 8):**
+
+Următoarele fapte săvârșite de conducătorii de biciclete constituie contravenții și se sancționează cu **amenda prevăzută în clasa a III-a de sancțiuni**:
+
+*   Conducerea unei biciclete pe drumurile publice fără mijloace de iluminare şi dispozitive reflectorizant-fluorescente în stare de funcţionare pe timp de noapte ori fără îndeplinirea condiţiilor tehnice minime stabilite prin regulament.
+*   Conducerea unei biciclete pe autostradă.
+*   Nerespectarea interdicţiei de trecere la culoarea roşie a semaforului, a semnalelor agentului de cale ferată, la trecerea la nivel cu o cale ferată industrială, semnalizată corespunzător ori a semnalelor, indicaţiilor ori dispoziţiilor poliţistului rutier.
+*   Nerespectarea interdicţiei privind circulaţia sub influenţa alcoolului, a substanțelor psihoactive.
+*   Nerespectarea interdicţiei privind interacţiunea motrică directă cu un alt vehicul aflat în mers ori cu persoane aflate în acesta.
+*   Nerespectarea interdicţiei privind circulaţia în interiorul sau în afara localităţilor fără a purta îmbrăcăminte cu elemente fluorescent-reflectorizante, stabilite prin regulament.
+*   Nerespectarea obligaţiei de a circula cu viteză redusă, a obligaţiei de a se asigura că nu se apropie un vehicul feroviar sau a obligaţiei de a opri la trecerea la nivel cu calea ferată, stabilite prin regulament.
+
+(Surse: HG 1391/2006 - Articolul 100, HG 1391/2006 - Articolul 14, HG 1391/2006 - Articolul 160, HG 1391/2006 - Articolul 161, HG 1391/2006 - Articolul 99)
+Așteptat (Articol): OUG 195/2002 Art. 143
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 13
+Întrebare: Ce sancțiuni există pentru parcarea neregulamentară?
+Răspuns RAG: În baza CONTEXTULUI LEGISLATIV furnizat:
+
+Contextul menționează o situație de parcare:
+*   **OUG 195/2002 - Articolul 15 (pct 6.)**: "staţionarea ori parcarea autovehiculelor pe autostradă sau pe drumul expres în alte locuri decât cele special amenajate şi semnalizate;"
+
+Cu toate acestea, informația despre sancțiunea specifică (clasa de sancțiuni sau puncte de amendă) pentru această faptă sau pentru "parcarea neregulamentară" în general nu este detaliată în articolele regăsite.
+
+Prin urmare, nu am găsit informația în articolele regăsite.
+
+(Surse: HG 1391/2006 - Articolul 145, HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 182, OUG 195/2002 - Articolul 101 (pct 13.), OUG 195/2002 - Articolul 101 (pct 14.))
+Așteptat (Articol): OUG 195/2002 Art. 181
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------
+ID: 14
+Întrebare: Care sunt regulile pentru utilizarea luminilor de întâlnire și de drum?
+Răspuns RAG: Conform contextului legislativ furnizat, regulile pentru utilizarea luminilor de întâlnire și de drum sunt următoarele:
+
+**Reguli generale pentru luminile de întâlnire sau de drum:**
+*   Conducătorii de autovehicule, tramvaie și mopede sunt obligați să folosească luminile de întâlnire sau de drum, în mers, atât în localități, cât și în afara acestora, după gradul de iluminare a drumului public. (HG 1391/2006 Art. 114 (1) b)
+
+**Reguli specifice pentru luminile de întâlnire:**
+*   Se folosesc pe timp de ceață densă, concomitent cu luminile de ceață. (HG 1391/2006 Art. 114 (1) c)
+*   Se folosesc în timpul zilei pentru autovehiculele care însoțesc coloane militare sau cortegii, transportă grupuri organizate de persoane și cele care tractează alte vehicule sau care transportă mărfuri ori produse periculoase. (HG 1391/2006 Art. 114 (1) d)
+*   Se folosesc atunci când plouă torențial, ninge abundent ori în alte condiții care reduc vizibilitatea pe drum. (HG 1391/2006 Art. 114 (1) e)
+*   Pe timpul nopții, la apropierea a două vehicule care circulă din sensuri opuse, conducătorii sunt obligați ca de la o distanță de cel puțin 200 m să folosească luminile de întâlnire concomitent cu reducerea vitezei. (HG 1391/2006 Art. 114 (2))
+*   Când conducătorul de autovehicul se apropie de un autovehicul care circulă în fața sa, acesta este obligat să folosească luminile de întâlnire de la o distanță de cel puțin 100 m. (HG 1391/2006 Art. 114 (2))
+*   Pe timpul nopții sau în condiții de vizibilitate redusă, conducătorii de autovehicule și tramvaie care se apropie de o intersecție nedirijată prin semnale luminoase sau de către polițiști, sunt obligați să semnalizeze prin folosirea alternantă a luminilor de întâlnire cu cele de drum dacă nu încalcă astfel prevederile alin. (2) al aceluiași articol. (HG 1391/2006 Art. 114 (3))
+*   Pe timpul nopții sau în condiții de vizibilitate redusă, autovehiculele sau remorcile cu defecțiuni la sistemul de iluminare și semnalizare luminoasă nu pot fi conduse sau remorcate fără a avea în funcțiune pe partea stângă, în față, o lumină de întâlnire și în spate una de poziție. (HG 1391/2006 Art. 114 (4))
+*   Când circulă prin tunel, conducătorul de vehicul este obligat să folosească luminile de întâlnire. (HG 1391/2006 Art. 114 (7))
+*   Conducătorii de autovehicule și tractoare agricole sau forestiere sunt obligați să folosească și în timpul zilei luminile de întâlnire sau luminile pentru circulația diurnă. (OUG 195/2002 Art. 44 (2))
+*   Conducătorii motocicletelor și mopedelor sunt obligați să folosească luminile de întâlnire pe toată durata deplasării acestora pe drumurile publice. (OUG 195/2002 Art. 44 (3))
+
+**Reguli specifice pentru luminile de drum:**
+*   Pe timpul nopții sau în condiții de vizibilitate redusă, conducătorii de autovehicule și tramvaie care se apropie de o intersecție nedirijată prin semnale luminoase sau de către polițiști, sunt obligați să semnalizeze prin folosirea alternantă a luminilor de întâlnire cu cele de drum dacă nu încalcă astfel prevederile Art. 114 alin. (2) (care impun folosirea luminilor de întâlnire la apropierea altor vehicule). (HG 1391/2006 Art. 114 (3))
+
+**Contravenții legate de utilizarea luminilor de întâlnire și de drum:**
+*   Nerespectarea obligației ce revine conducătorului de motocicletă sau moped de a avea în funcțiune, în timpul zilei, luminile de întâlnire în circulația pe drumurile publice, constituie contravenție. (OUG 195/2002 Art. 32 (pct 11.))
+*   Folosirea incorectă a luminilor de drum la întâlnirea cu un autovehicul și tractor agricol sau forestier care circulă din sens opus, constituie contravenție. (OUG 195/2002 Art. 108 (pct 1.))
+
+Nu am găsit informația în articolele regăsite despre clasa de sancțiuni sau punctele de penalizare pentru contravențiile menționate.
+
+(Surse: HG 1391/2006 - Articolul 114, HG 1391/2006 - Articolul 115, HG 1391/2006 - Articolul 116, HG 1391/2006 - Articolul 13, HG 1391/2006 - Articolul 156)
+Așteptat (Articol): OUG 195/2002 Art. 119
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 15
+Întrebare: Ce trebuie să conțină trusa medicală obligatorie în autovehicul?
+Răspuns RAG: Nu am găsit informația în articolele regăsite care să detalieze ce trebuie să conțină trusa medicală obligatorie în autovehicul.
+
+Conform Art. 125, lit. e) din OUG 195/2002, Ministerul Sănătății este cel care "stabileşte şi certifică conţinutul truselor medicale de prim ajutor."
+
+(Surse: HG 1391/2006 - Articolul 12, HG 1391/2006 - Articolul 147 (pct 5.), HG 1391/2006 - Articolul 150, HG 1391/2006 - Articolul 18, HG 1391/2006 - Articolul 97)
+Așteptat (Articol): OUG 195/2002 Art. 136
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------
+ID: 16
+Întrebare: Care sunt regulile pentru transportul copiilor în autovehicule?
+Răspuns RAG: Iată regulile pentru transportul copiilor în autovehicule, conform contextului legislativ furnizat:
+
+**Reguli generale pentru transportul copiilor în autovehicule:**
+
+1.  **Obligația conducătorului auto:** Conducătorii de autovehicule având locuri prevăzute prin construcție cu centuri de siguranță au obligația să se asigure că, pe timpul conducerii vehiculului, minorii poartă centurile de siguranță sau sunt transportați numai în dispozitive de fixare în scaune pentru copii omologate, în condițiile prevăzute de regulament.
+    *   *Articolul relevant:* OUG 195/2002 - Articolul 36 alin. (1.2)
+2.  **Copii cu vârsta sub 3 ani:** Se transportă numai în dispozitive de reținere omologate. Le este interzis conducătorilor de autovehicule să transporte copii în vârstă de până la 3 ani în autovehicule care nu sunt echipate cu sisteme de siguranță, cu excepția celor destinate transportului public de persoane, precum și a taxiurilor dacă în acestea din urmă ocupă orice alt loc decât cel de pe scaunul din față.
+    *   *Articole relevante:* OUG 195/2002 - Articolul 36 alin. (1.3); HG 1391/2006 - Articolul 97 alin. (1)
+3.  **Copii cu vârsta sub 12 ani sau cu înălțimea sub 150 cm:** Trebuie să poarte centuri de siguranță adaptate greutății și dimensiunilor lor.
+    *   *Articolul relevant:* HG 1391/2006 - Articolul 97 alin. (1)
+4.  **Transportul pe scaunul din față:** Le este interzis conducătorilor de autovehicule să transporte copii cu vârstă de până la 12 ani pe scaunul din față, chiar dacă sunt ținuți în brațe de persoane majore, în timpul deplasării pe drumurile publice.
+    *   *Articole relevante:* HG 1391/2006 - Articolul 97 alin. (2); HG 1391/2006 - Articolul 148 pct. 5
+5.  **Copii cu vârsta de peste 3 ani și o înălțime de până la 150 cm, în autovehicule fără sisteme de siguranță:** Pot fi transportați doar dacă ocupă, pe timpul transportului, orice alt loc decât cel de pe scaunul din față.
+    *   *Articolul relevant:* OUG 195/2002 - Articolul 36 alin. (1.3)
+6.  **Autovehicule destinate exclusiv transportului copiilor:** Acestea trebuie să aibă montat pe caroserie, în față și în spate, indicatorul „Copii!”.
+    *   *Articolul relevant:* HG 1391/2006 - Articolul 11
+
+**Reguli pentru transportul copiilor pe motociclete și mopede:**
+
+1.  **Numărul de persoane:** Se interzice transportul a mai multor persoane decât locurile stabilite prin construcție, precum și al obiectelor voluminoase.
+    *   *Articolul relevant:* HG 1391/2006 - Articolul 98 alin. (1)
+2.  **Vârsta copiilor:** Copiii în vârstă de până la 7 ani, dacă sunt ținuți în brațe, precum și cei de până la 14 ani se transportă numai în atașul motocicletelor.
+    *   *Articolul relevant:* HG 1391/2006 - Articolul 98 alin. (2)
+
+**Sancțiuni:**
+
+Nerespectarea obligației conducătorului de autovehicul de a se asigura că persoanele minore poartă centuri de siguranță sau sunt transportate în dispozitive de fixare în scaune pentru copii omologate, în condițiile prevăzute de regulament, constituie o **contravenție**.
+
+Nu am găsit informația în articolele regăsite despre clasa de sancțiuni sau punctele de penalizare specifice pentru această contravenție.
+*   *Articolul relevant:* OUG 195/2002 - Articolul 108 alin. (1) și pct. 9
+
+(Surse: HG 1391/2006 - Articolul 11, HG 1391/2006 - Articolul 148 (pct 5.), HG 1391/2006 - Articolul 41, HG 1391/2006 - Articolul 97, HG 1391/2006 - Articolul 98)
+Așteptat (Articol): OUG 195/2002 Art. 137
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 10/10
+--------------------------------------------------
+ID: 17
+Întrebare: Ce sancțiuni există pentru depășirea limitei de viteză?
+Răspuns RAG: Conform articolelor de lege furnizate, sancțiunile pentru depășirea limitei de viteză sunt următoarele:
+
+**Contravenții care specifică sancțiunea:**
+
+1.  **Depășirea cu mai mult de 50 km/h a vitezei maxime admise** pe sectorul de drum respectiv și pentru categoria din care face parte autovehiculul condus, constatată cu mijloace tehnice omologate și verificate metrologic.
+    *   **Sancțiune:** Amendă prevăzută în clasa a IV-a de sancțiuni și suspendarea exercitării dreptului de a conduce pentru o perioadă de **90 de zile**.
+    *   **Articol:** OUG 195/2002, Art. 108 alin. (3) lit. e).
+
+2.  **Depășirea cu mai mult de 70 km/h a vitezei maxime admise** pe sectorul de drum respectiv și pentru categoria din care face parte autovehiculul condus, constatată cu mijloace tehnice omologate și verificate metrologic.
+    *   **Sancțiune:** Amendă prevăzută în clasa a IV-a de sancțiuni și suspendarea exercitării dreptului de a conduce pentru o perioadă de **120 de zile**.
+    *   **Articol:** OUG 195/2002, Art. 108 alin. (4) lit. a).
+
+**Contravenții care descriu fapta de depășire a vitezei, dar pentru care sancțiunea specifică (clasa de amendă sau puncte de penalizare) nu este detaliată în articolele regăsite:**
+
+*   **Depășirea cu 10-20 km/h a vitezei maxime admise** pe sectorul de drum respectiv pentru categoria din care face parte autovehiculul condus, constatată, potrivit legii, cu mijloace tehnice omologate și verificate metrologic.
+    *   **Articol:** OUG 195/2002, Articolul 108 (pct 4.).
+    *   **Sancțiune:** Nu am găsit informația despre clasa de amendă sau punctele de penalizare în articolele regăsite.
+
+*   **Depășirea cu 21-30 km/h a vitezei maxime admise** pe sectorul de drum respectiv pentru categoria din care face parte autovehiculul condus, constatată, potrivit legii, cu mijloace tehnice omologate și verificate metrologic.
+    *   **Articol:** OUG 195/2002, Articolul 108 (pct 2.).
+    *   **Sancțiune:** Nu am găsit informația despre clasa de amendă sau punctele de penalizare în articolele regăsite.
+
+*   **Depășirea cu 31-40 km/h a vitezei maxime admise** pe sectorul de drum respectiv pentru categoria din care face parte autovehiculul condus, constatată, potrivit legii, cu mijloace tehnice omologate și verificate metrologic.
+    *   **Articol:** OUG 195/2002, Articolul 36 (pct 3.).
+    *   **Sancțiune:** Nu am găsit informația despre clasa de amendă sau punctele de penalizare în articolele regăsite.
+
+*   **Depășirea cu 41-50 km/h a vitezei maxime admise** pe sectorul de drum respectiv pentru categoria din care face parte autovehiculul condus, constatată, potrivit legii, cu mijloace tehnice omologate și verificate metrologic.
+    *   **Articol:** OUG 195/2002, Articolul 15 (pct 3.).
+    *   **Sancțiune:** Nu am găsit informația despre clasa de amendă sau punctele de penalizare în articolele regăsite.
+
+**Alte contravenții legate de viteză, dar nu direct de "depășirea" limitei maxime:**
+
+*   **Nereducerea vitezei în cazurile prevăzute de regulament.**
+    *   **Sancțiune:** Amendă prevăzută în clasa a III-a de sancțiuni.
+    *   **Articol:** OUG 195/2002, Art. 101 (pct 9.).
+
+*   **Deținerea, montarea sau folosirea în circulația pe drumurile publice a dispozitivelor care perturbă funcționarea normală a dispozitivelor de măsurare a vitezei.**
+    *   **Sancțiune:** Amendă prevăzută în clasa a IV-a de sancțiuni.
+    *   **Articol:** OUG 195/2002, Art. 102 (pct 11.).
+
+*   **Conducerea unui autovehicul în mod nejustificat cu o viteză cu cel puțin 10 km/h sub limita minimă obligatorie stabilită pe tronsonul de drum respectiv.**
+    *   **Sancțiune:** Amendă prevăzută în clasa I de sancțiuni.
+    *   **Articol:** OUG 195/2002, Art. 99 (pct 1.).
+
+(Surse: HG 1391/2006 - Articolul 121, HG 1391/2006 - Articolul 123, OUG 195/2002 - Articolul 101 (pct 9.), OUG 195/2002 - Articolul 102 (pct 11.), OUG 195/2002 - Articolul 108)
+Așteptat (Articol): OUG 195/2002 Art. 108
+Scor Retrieval: 100.0%
+Scor Răspuns (Judge): 5/10
+--------------------------------------------------
+ID: 18
+Întrebare: Care sunt regulile pentru utilizarea sistemelor de siguranță pasivă în autovehicule?
+Răspuns RAG: Regulile privind utilizarea sistemelor de siguranță pasivă în autovehicule, conform contextului legislativ furnizat, sunt următoarele:
+
+**1. Obligația de a purta centura de siguranță:**
+*   Conducătorii de autovehicule, tractoare agricole sau forestiere și persoanele care ocupă locuri prevăzute cu centuri de siguranță omologate trebuie să le poarte în timpul circulației pe drumurile publice, cu excepția cazurilor prevăzute în regulament. (OUG 195/2002, Art. 36 alin. 1)
+*   Conducătorii de autovehicule trebuie să informeze pasagerii cu privire la obligația legală de a purta centurile de siguranță. (OUG 195/2002, Art. 36 alin. 1.1)
+
+**2. Transportul copiilor și utilizarea sistemelor de siguranță pentru copii:**
+*   Conducătorii de autovehicule au obligația să se asigure că, pe timpul conducerii vehiculului, minorii poartă centurile de siguranță sau sunt transportați numai în dispozitive de fixare în scaune pentru copii omologate, în condițiile prevăzute de regulament. (OUG 195/2002, Art. 36 alin. 1.2)
+*   Copiii cu vârsta sub 12 ani sau cu înălțimea sub 150 cm trebuie să poarte centuri de siguranță adaptate greutății și dimensiunilor lor. (HG 1391/2006, Art. 97 alin. 1)
+*   Copiii cu vârsta sub 3 ani se transportă numai în dispozitive de reținere omologate. (HG 1391/2006, Art. 97 alin. 1)
+*   Conducătorilor de autovehicule le este interzis să transporte copii în vârstă de până la 3 ani în autovehicule care nu sunt echipate cu sisteme de siguranță, cu excepția celor destinate transportului public de persoane, precum și a taxiurilor dacă în acestea din urmă ocupă orice alt loc decât cel de pe scaunul din față. (OUG 195/2002, Art. 36 alin. 1.3)
+*   Copiii cu vârsta de peste 3 ani, având o înălțime de până la 150 cm, pot fi transportați în autovehicule care nu sunt echipate cu sisteme de siguranță doar dacă ocupă, pe timpul transportului, orice alt loc decât cel de pe scaunul din față. (OUG 195/2002, Art. 36 alin. 1.3)
+*   Este interzis conducătorilor de autovehicule să transporte copii cu vârsta de până la 12 ani pe scaunul din față, chiar dacă sunt ținuți în brațe de persoane majore, în timpul deplasării pe drumurile publice. (HG 1391/2006, Art. 97 alin. 2; HG 1391/2006, Art. 148 alin. 5)
+*   Autovehiculele destinate exclusiv transportului copiilor trebuie să aibă montat pe caroserie, în față și în spate, indicatorul „Copii!”. (HG 1391/2006, Art. 11)
+
+**3. Obligația de a purta casca de protecție:**
+*   Pe timpul deplasării pe drumurile publice, conducătorii motocicletelor, mopedelor și persoanele transportate pe acestea au obligația să poarte cască de protecție omologată. (OUG 195/2002, Art. 36 alin. 2)
+
+**4. Excepții de la obligația de a purta centura de siguranță:**
+*   Conducătorii de autoturisme pe timpul executării manevrei de mers înapoi sau care staționează.
+*   Femeile în stare vizibilă de graviditate.
+*   Conducătorii de autoturisme care execută servicii de transport public de persoane, în regim de taxi, când transportă pasageri.
+*   Persoanele care au certificat medical în care să fie menționată afecțiunea care contraindică purtarea centurii de siguranță. Aceste persoane sunt obligate să aibă asupra lor certificatul medical, în conținutul căruia trebuie să fie menționată durata de valabilitate a acestuia. Afecțiunile medicale și modelul certificatului se stabilesc prin ordin al ministrului sănătății publice.
+*   Instructorii auto pe timpul pregătirii practice a persoanelor care învață să conducă un autovehicul pe drumurile publice sau examinatorul din cadrul autorității competente în timpul desfășurării probelor practice ale examenului pentru obținerea permisului de conducere. (HG 1391/2006, Art. 97 alin. 4, 5, 6)
+
+**5. Sancțiuni (Contravenții):**
+*   Nerespectarea obligației conducătorului de autovehicul de a se asigura că persoanele minore poartă centuri de siguranță sau sunt transportate în dispozitive de fixare în scaune pentru copii omologate, în condițiile prevăzute de regulament, constituie contravenție. (OUG 195/2002, Art. 108 alin. 9)
+    *   Clasa de sancțiuni sau punctele de penalizare specifice pentru această contravenție nu sunt menționate explicit în articolele regăsite.
+
+(Surse: HG 1391/2006 - Articolul 11, HG 1391/2006 - Articolul 148 (pct 5.), HG 1391/2006 - Articolul 152, HG 1391/2006 - Articolul 97, OUG 195/2002 - Articolul 108 (pct 9.))
+Așteptat (Articol): OUG 195/2002 Art. 35
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 5/10
+--------------------------------------------------
+ID: 19
+Întrebare: Ce trebuie să fac pentru a contesta o amendă rutieră?
+Răspuns RAG: Pentru a contesta o amendă rutieră, trebuie să depuneți o plângere. Iată pașii conform contextului legislativ furnizat:
+
+1.  **Termen și instanță**: Împotriva procesului-verbal de constatare și sancționare a contravenției se poate depune plângere, în termen de **15 zile de la comunicare**, la judecătoria în a cărei rază de competență a fost constatată fapta.
+    *   **Art. 118 alin. (1) din OUG 195/2002**
+2.  **Efectul plângerii**: Plângerea suspendă executarea amenzii și a sancțiunii contravenționale complementare dispuse prin procesul-verbal de constatare și sancționare a contravenției de la data înregistrării la judecătorie.
+    *   **Art. 118 alin. (2) din OUG 195/2002**
+3.  **Dovada înregistrării**: Dovada înregistrării plângerii contravenționale se realizează printr-un document emis de instanța de judecată sau printr-un extras din portalul instanțelor de judecată (www.portal.just.ro) și se depune sau se transmite, prin orice mijloace de comunicare la distanță, la unitatea de poliție din care face parte agentul constatator. Permisul de conducere reținut se restituie personal titularului sau reprezentantului său.
+    *   **Art. 118 alin. (3) din OUG 195/2002**
+
+**Consecințe în lipsa contestării**: Procesul-verbal neatacat în termen de 15 zile de la data comunicării sale, precum și hotărârea judecătorească prin care s-a soluționat plângerea, constituie titluri executorii, fără vreo altă formalitate.
+*   **Art. 120 alin. (1) din OUG 195/2002**
+
+**Important**: Dacă sancțiunea include reținerea permisului de conducere și/sau a certificatului de înmatriculare sau a plăcuțelor, agentul constatator eliberează o dovadă înlocuitoare. În cazul în care instanța anulează procesul-verbal, punctele de penalizare aplicate se radiază din evidență.
+*   **Art. 180 alin. (6) din HG 1391/2006**
+*   **Art. 206 din HG 1391/2006**
+
+(Surse: HG 1391/2006 - Articolul 180, HG 1391/2006 - Articolul 181, HG 1391/2006 - Articolul 204, HG 1391/2006 - Articolul 206, HG 1391/2006 - Articolul 210)
+Așteptat (Articol): OUG 195/2002 Art. 216
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 5/10
+--------------------------------------------------
+ID: 20
+Întrebare: Care sunt regulile pentru circulația pe timp de noapte?
+Răspuns RAG: Conform contextului legislativ furnizat, regulile specifice pentru circulația pe timp de noapte sunt următoarele:
+
+1.  **Oprirea vehiculelor noaptea**: Oprirea vehiculelor pe drumurile publice se realizează, de regulă, în afara părții carosabile, iar acolo unde nu există asemenea condiții, cât mai aproape de marginea din dreapta a drumului, pe acostament sau lângă bordură ori în spațiile de parcare, iar noaptea, cu precădere, în locuri iluminate.
+    *   **Articolul de lege relevant**: Art. 182 alin. (2) din HG 1391/2006.
+
+2.  **Semnalizarea lucrărilor pe drumurile publice pe timpul nopții**: Semnalizarea lucrărilor care se execută pe drumurile publice este obligatorie. Aceasta este însoțită pe timpul nopții de lămpi cu lumină galbenă intermitentă sau în cascadă.
+    *   **Articolul de lege relevant**: Art. 33 alin. (2) din OUG 195/2002.
+
+3.  **Oprirea sau staționarea cu luminile stinse**: Un vehicul poate fi oprit sau staționat cu toate luminile stinse, în locurile în care aceste manevre sunt permise, atunci când se află pe un drum iluminat, astfel încât vehiculul este vizibil de la o distanță de cel puțin 50 m.
+    *   **Articolul de lege relevant**: Art. 115 lit. a) din HG 1391/2006.
+
+Deși contextul menționează că motocicletele și mopedele sunt obligate să folosească luminile de întâlnire pe toată durata deplasării (Art. 44 alin. 3 din OUG 195/2002) și că autovehiculele și tractoarele agricole sau forestiere sunt obligate să folosească luminile de întâlnire sau luminile pentru circulația diurnă și în timpul zilei (Art. 44 alin. 2 din OUG 195/2002), nu există o mențiune explicită în contextul furnizat care să detalieze obligația generală a autovehiculelor de a folosi luminile specifice (faza scurtă/lungă) pentru circulația pe timp de noapte, în afară de cele de mai sus.
+
+(Surse: HG 1391/2006 - Articolul 115, HG 1391/2006 - Articolul 146, HG 1391/2006 - Articolul 182, HG 1391/2006 - Articolul 4, HG 1391/2006 - Articolul 99)
+Așteptat (Articol): OUG 195/2002 Art. 120
+Scor Retrieval: 0.0%
+Scor Răspuns (Judge): 0/10
+--------------------------------------------------

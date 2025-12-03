@@ -33,5 +33,110 @@
       "expected_article_id": "337",
       "expected_source": "Codul Penal",
       "key_facts": ["infracțiune", "închisoare", "1 la 5 ani"]
+    },
+    {
+      "id": 6,
+      "question": "Care sunt regulile pentru depășirea pe drumurile publice?",
+      "expected_article_id": "69",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["semnalizare", "vizibilitate", "interzicerea depășirii în anumite condiții"]
+    },
+    {
+      "id": 7,
+      "question": "Ce documente sunt necesare pentru a conduce un autovehicul?",
+      "expected_article_id": "7",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["permis de conducere", "certificat de înmatriculare", "asigurare RCA"]
+    },
+    {
+      "id": 8,
+      "question": "Care sunt condițiile pentru obținerea unui permis de conducere?",
+      "expected_article_id": "9",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["vârsta minimă", "examinare teoretică și practică", "stare medicală corespunzătoare"]
+    },
+    {
+      "id": 9,
+      "question": "Ce sancțiuni există pentru conducerea sub influența alcoolului?",
+      "expected_article_id": "336",
+      "expected_source": "Codul Penal",
+      "key_facts": ["infracțiune", "închisoare", "1 la 5 ani", "amendă penală"]
+    },
+    {
+      "id": 10,
+      "question": "Care sunt regulile privind utilizarea telefonului mobil în timpul conducerii?",
+      "expected_article_id": "110",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["interzisă utilizarea fără dispozitiv hands-free", "sancțiuni pentru nerespectare"]
+    },
+    {
+      "id": 11,
+      "question": "Ce trebuie să fac în caz de accident rutier?",
+      "expected_article_id": "180",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["oprirea imediată", "asigurarea locului accidentului", "anunțarea autorităților"]
+    },
+    {
+      "id": 12,
+      "question": "Care sunt regulile pentru circulația bicicletelor pe drumurile publice?",
+      "expected_article_id": "143",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["purtarea căștii de protecție", "utilizarea echipamentului reflectorizant", "respectarea regulilor de circulație"]
+    },
+    {
+      "id": 13,
+      "question": "Ce sancțiuni există pentru parcarea neregulamentară?",
+      "expected_article_id": "181",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["amendă contravențională", "ridicarea vehiculului", "puncte-amendă"]
+    },
+    {
+      "id": 14,
+      "question": "Care sunt regulile pentru utilizarea luminilor de întâlnire și de drum?",
+      "expected_article_id": "119",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["utilizarea obligatorie în condiții de vizibilitate redusă", "sancțiuni pentru nerespectare"]
+    },
+    {
+      "id": 15,
+      "question": "Ce trebuie să conțină trusa medicală obligatorie în autovehicul?",
+      "expected_article_id": "136",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["bandaje", "dezinfectante", "foarfece", "mănuși de unică folosință"]
+    },
+    {
+      "id": 16,
+      "question": "Care sunt regulile pentru transportul copiilor în autovehicule?",
+      "expected_article_id": "137",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["utilizarea scaunelor speciale", "vârsta și greutatea copilului", "sancțiuni pentru nerespectare"]
+    },
+    {
+      "id": 17,
+      "question": "Ce sancțiuni există pentru depășirea limitei de viteză?",
+      "expected_article_id": "108",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["amendă contravențională", "puncte-amendă", "suspendarea permisului de conducere"]
+    },
+    {
+      "id": 18,
+      "question": "Care sunt regulile pentru utilizarea sistemelor de siguranță pasivă în autovehicule?",
+      "expected_article_id": "35",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["purtarea centurii de siguranță", "utilizarea airbag-urilor", "sancțiuni pentru nerespectare"]
+    },
+    {
+      "id": 19,
+      "question": "Ce trebuie să fac pentru a contesta o amendă rutieră?",
+      "expected_article_id": "216",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["depune contestație în termenul legal", "prezintă dovezi relevante", "urmărește procedura administrativă"]
+    },
+    {
+      "id": 20,
+      "question": "Care sunt regulile pentru circulația pe timp de noapte?",
+      "expected_article_id": "120",
+      "expected_source": "OUG 195/2002",
+      "key_facts": ["utilizarea obligatorie a luminilor de întâlnire", "reducerea vitezei", "sancțiuni pentru nerespectare"]
     }
   ]

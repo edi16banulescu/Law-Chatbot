@@ -3,7 +3,7 @@ import re
 import os
 
 # Numele fisierului incarcat de tine
-CORPUS_FILE = "codul_rutier.txt"
+CORPUS_FILE = "data/codul_rutier.txt"
 
 def load_and_chunk_data():
     """

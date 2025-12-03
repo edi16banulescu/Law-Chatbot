@@ -13,3 +13,5 @@ To reindex the knowledge base, run the following command:
 ```bash
 python3 -c 'from vector_db_manager import clear_db; clear_db()'
 ```
+
+Or delete chroma_db/ folder.

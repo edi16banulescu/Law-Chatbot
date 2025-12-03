@@ -47,7 +47,7 @@ def generate_embeddings(texts: list[str]) -> list[list[float]]:
             time.sleep(1) 
             
         except APIError as e:
-            print(f"Eroare API la generarea embedding-urilor (Lotul {i // BAZA_MARIME + 1}): {e}")
+            print(f"Eroare API la generarea embedding-urilor (Lotul {i // BATCH_SIZE + 1}): {e}")
             return []
         except Exception as e:
             # Tipareste eroarea completa pentru debugging

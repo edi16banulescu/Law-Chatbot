@@ -1,25 +1,16 @@
 import json
 import os
-import time
-from google import genai
-from rag_service import initialize_rag_system, process_query
+from src.rag_service import process_query, initialize_rag_system
 
 # Configuratii
-BENCHMARK_FILE = "benchmark_data.json"
+BENCHMARK_FILE = "eval/benchmark_data.json"
 REPORT_FILE = "raport_evaluare.txt"
-JUDGE_MODEL = 'gemini-2.5-flash'
-
-def get_judge_client():
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY nu este setată.")
-    return genai.Client(api_key=api_key)
+JUDGE_MODEL = 'llama3.2'
 
 def evaluate_retrieval(retrieved_text, expected_article_id, expected_source):
     """
     Metrică Deterministică: Verifică dacă ID-ul articolului corect apare în textul regăsit.
     """
-    # Cautam ceva de genul "Art. 102" sau "Articolul 102"
     search_terms = [
         f"Art. {expected_article_id}",
         f"Articolul {expected_article_id}",
@@ -33,24 +24,21 @@ def evaluate_retrieval(retrieved_text, expected_article_id, expected_source):
             found = True
             break
             
-    # Verificam si sursa (OUG vs HG vs Penal)
     source_match = False
     if expected_source.lower() in retrieved_text.lower():
         source_match = True
         
     if found and source_match:
-        return 1.0 # Perfect
+        return 1.0 
     elif found:
-        return 0.5 # A gasit articolul dar poate sursa e ambigua
+        return 0.5 
     else:
-        return 0.0 # Fail
+        return 0.0
 
 def evaluate_answer_quality_with_llm(user_question, rag_answer, key_facts):
     """
-    Folosește LLM-ul ca Judecător pentru a compara răspunsul RAG cu faptele cheie.
-    Returnează un scor de la 0 la 10.
+    Folosește LLM-ul Local (Ollama) ca Judecător.
     """
-    client = get_judge_client()
     facts_str = ", ".join(key_facts)
     
     prompt = (
@@ -63,31 +51,48 @@ def evaluate_answer_quality_with_llm(user_question, rag_answer, key_facts):
         "0 = Răspuns complet greșit sau halucinație.\n"
         "5 = Răspuns parțial corect, lipsește un fapt cheie sau este vag.\n"
         "10 = Răspuns perfect, conține toate faptele cheie juridice.\n\n"
-        "Returnează DOAR nota (un singur număr)."
+        "Răspunde DOAR cu nota numerică (un singur număr, de exemplu: 8). Nu scrie alt text."
     )
     
     try:
-        response = client.models.generate_content(
-            model=JUDGE_MODEL,
-            contents=[prompt]
-        )
-        score = int(response.text.strip())
-        return score
-    except:
+        response = ollama.chat(model=JUDGE_MODEL, messages=[
+            {'role': 'user', 'content': prompt}
+        ])
+        
+        # Curățăm răspunsul pentru a extrage doar numărul
+        content = response['message']['content'].strip()
+        # Extragem doar cifrele din raspuns (in caz ca modelul e verbos)
+        import re
+        match = re.search(r'\b(10|[0-9])\b', content)
+        if match:
+            return int(match.group(1))
+        return 0
+    except Exception as e:
+        print(f"[WARN] Eroare la evaluarea cu LLM: {e}")
         return 0
 
 def run_evaluation():
     print("="*60)
-    print(" 🧪 PORNIRE EVALUARE AUTOMATĂ (PIPELINE DE TESTARE)")
+    print(" 🦙 PORNIRE EVALUARE AUTOMATĂ (LOCAL - OLLAMA)")
     print("="*60)
     
-    # 1. Incarcam datele de test
+    if not os.path.exists(BENCHMARK_FILE):
+        print(f"[EROARE] Nu găsesc fișierul {BENCHMARK_FILE}.")
+        return
+
     with open(BENCHMARK_FILE, 'r', encoding='utf-8') as f:
         test_cases = json.load(f)
         
-    # 2. Initializam sistemul RAG (o singura data)
-    # Nota: Cand te intreaba de re-indexare, alege 'nu' daca ai indexat deja corect
-    collection = initialize_rag_system()
+    # Initializam sistemul RAG (care acum foloseste si el Ollama din rag_service.py)
+    original_cwd = os.getcwd()
+    os.chdir(parent_dir) 
+    try:
+        # Nota: Alege 'nu' la re-indexare daca ai deja baza de date locala facuta
+        collection = initialize_rag_system()
+    except Exception as e:
+        print(f"[FATAL] Eroare la inițializare: {e}")
+        os.chdir(original_cwd)
+        return
     
     total_retrieval_score = 0
     total_answer_score = 0
@@ -95,32 +100,28 @@ def run_evaluation():
     
     print(f"\nÎncep evaluarea pentru {len(test_cases)} cazuri de test...\n")
     
+    # Schimbam directorul pentru a rula procesele
+    os.chdir(parent_dir)
+
     for case in test_cases:
         print(f"Testare ID {case['id']}: {case['question']}...")
         
-        # Rulam RAG-ul (ne intereseaza raspunsul text, dar trebuie sa capturam si contextul intern)
-        # Pentru evaluare precisa, ar trebui sa modificam process_query sa returneze si contextul,
-        # dar aici vom analiza raspunsul final care contine (Surse: ...)
+        # Rulam RAG-ul
+        rag_output = process_query(collection, case['question'], k_results=10)
         
-        # Nota: process_query printeaza in consola, dar returneaza string-ul raspunsului
-        # Pentru a nu polua consola, poti comenta print-urile din rag_service.py sau le ignori
-        rag_output = process_query(collection, case['question'], k_results=15)
-        
-        # 1. Evaluare Retrieval (verificam daca sursa apare in raspunsul text la final)
-        # Deoarece rag_service pune la final "(Surse: ...)", putem verifica acolo
+        # 1. Evaluare Retrieval
         retrieval_score = evaluate_retrieval(rag_output, case['expected_article_id'], case['expected_source'])
         
-        # 2. Evaluare Calitate Raspuns (LLM Judge)
+        # 2. Evaluare Calitate Raspuns (Local Judge)
         answer_score = evaluate_answer_quality_with_llm(case['question'], rag_output, case['key_facts'])
         
-        # Logging
         log_entry = (
             f"ID: {case['id']}\n"
             f"Întrebare: {case['question']}\n"
             f"Răspuns RAG: {rag_output}\n"
-            f"Așteptat (Articol): {case['expected_source']} Art. {case['expected_article_id']}\n"
+            f"Așteptat: {case['expected_source']} Art. {case['expected_article_id']}\n"
             f"Scor Retrieval: {retrieval_score * 100}%\n"
-            f"Scor Răspuns (Judge): {answer_score}/10\n"
+            f"Scor Răspuns (Llama Judge): {answer_score}/10\n"
             "--------------------------------------------------\n"
         )
         results_log.append(log_entry)
@@ -128,18 +129,21 @@ def run_evaluation():
         total_retrieval_score += retrieval_score
         total_answer_score += answer_score
         
-        print(f"  -> Retrieval: {retrieval_score}, Answer Quality: {answer_score}/10")
-        time.sleep(2) # Pauza sa nu lovim limita de rate a API-ului
+        print(f"  -> Rezultat: Retrieval={retrieval_score*100}%, Calitate={answer_score}/10")
+        # Nu e nevoie de sleep la Ollama local, dar poate ajuta la output curat
         
-    # Calcul Statistici Finale
+    # Revenim la directorul original
+    os.chdir(original_cwd)
+
     avg_retrieval = (total_retrieval_score / len(test_cases)) * 100
     avg_answer = total_answer_score / len(test_cases)
     
     final_report = (
         "==================================================\n"
-        "RAPORT FINAL DE EVALUARE AUTOMATĂ\n"
+        "RAPORT FINAL DE EVALUARE AUTOMATĂ (LOCAL)\n"
         "==================================================\n"
         f"Număr teste: {len(test_cases)}\n"
+        f"Judecător: {JUDGE_MODEL} (Ollama)\n"
         f"Acuratețe Regăsire (Retrieval Accuracy): {avg_retrieval:.2f}%\n"
         f"Calitate Medie Răspuns (LLM Grade): {avg_answer:.2f}/10\n\n"
         "DETALII PE CAZURI:\n" + 
@@ -156,7 +160,4 @@ def run_evaluation():
     print("="*60)
 
 if __name__ == "__main__":
-    if not os.getenv("GEMINI_API_KEY"):
-        print("EROARE: Setează GEMINI_API_KEY!")
-    else:
-        run_evaluation()
+    run_evaluation()
